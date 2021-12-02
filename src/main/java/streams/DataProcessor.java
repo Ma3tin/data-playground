@@ -31,16 +31,20 @@ public class DataProcessor {
 
     public static double avgAgeOfFemaleStudent(List<Student> students) {
         return students.stream().filter(student -> student.getGender() == Gender.FEMALE)
-                .mapToInt(student -> student.getAge()).average().orElseGet(() -> 0);
+                .mapToInt(student -> student.getAge())
+                .average().orElseGet(() -> 0);
     }
 
     public static Integer getProductOfStudentAges(List<Student> students) {
-        return students.stream().mapToInt(value -> value.getAge()).reduce(1, (left, right) -> left * right);
+        return students.stream().mapToInt(value -> value.getAge())
+                .reduce(1, (left, right) -> left * right);
     }
 
     // ignore F Grades
     public static double productOfStudentGrades(Student student) {
-        return student.getGrades().stream().filter(grade -> grade.getType() != GradeType.F).mapToInt(value -> value.getType().getValue()).reduce(1, (left, right) -> left * right);
+        return student.getGrades().stream().filter(grade -> grade.getType() != GradeType.F)
+                .mapToInt(value -> value.getType()
+                .getValue()).reduce(1, (left, right) -> left * right);
     }
 
     // region BONUS
@@ -48,7 +52,8 @@ public class DataProcessor {
     public static Optional<Grade> getBestMathGradeFromStudent(Student student) {
         //return Optional.empty();
 
-        return student.getGrades().stream().filter(grade -> grade.getSubject() == Subject.MATH).sorted((g1, g2) -> g2.getType().getValue() - g1.getType().getValue()).findFirst();
+        return student.getGrades().stream().filter(grade -> grade.getSubject() == Subject.MATH)
+                .sorted((g1, g2) -> g2.getType().getValue() - g1.getType().getValue()).findFirst();
     }
 
     public static List<Integer> getSortedAges(List<Student> students) {
