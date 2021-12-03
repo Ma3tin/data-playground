@@ -39,4 +39,12 @@ public class Student {
     public Subject getFavouriteSubject() {
         return favouriteSubject;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

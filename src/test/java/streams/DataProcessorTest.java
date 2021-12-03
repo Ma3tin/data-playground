@@ -39,8 +39,15 @@ public class DataProcessorTest {
 
     @Test
     public void getStudentsWithMinimumAge() throws Exception {
-        assertEquals(List.of(school.getClasses().get(0).getStudents().get(2)), DataProcessor.getStudentsWithMinimumAge(school.getClasses().get(0).getStudents(), 13));
-        assertEquals(List.of(school.getClasses().get(1).getStudents().get(0)), DataProcessor.getStudentsWithMinimumAge(school.getClasses().get(1).getStudents(), 9));
+        assertEquals(
+                List.of(school.getClasses().get(1).getStudents().get(1)),
+                streams.DataProcessor.getStudentsWithMinimumAge(school.getClasses().get(1).getStudents(), 12)
+        );
+
+        assertEquals(
+                List.of(school.getClasses().get(0).getStudents().get(0), school.getClasses().get(0).getStudents().get(1)),
+                streams.DataProcessor.getStudentsWithMinimumAge(school.getClasses().get(0).getStudents(), 14)
+        );
     }
 
     @Test
