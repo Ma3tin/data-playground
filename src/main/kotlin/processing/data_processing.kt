@@ -1,11 +1,9 @@
 package processing
 
 import streams.*
-import kotlin.math.min
-
 
 fun atLeastOneGradeA(student: Student): Boolean {
-    return student.grades.asSequence().any() {grade ->  grade.type == GradeType.A}
+    return student.grades.any { grade -> grade.type == GradeType.A }
 }
 
 
@@ -32,12 +30,13 @@ fun avgAgeOfFemaleStudent(students: List<Student>): Double {
 }
 
 fun getProductOfStudentAges(students: List<Student>): Int {
-    return students.fold(1) {acc, student -> acc * student.age}
+    return students.fold(1) { acc, student -> acc * student.age }
 }
 
 // ignore F Grades
 fun productOfStudentGrades(student: Student): Int {
-    return student.grades.asSequence().filter { grade ->  grade.type != GradeType.F}.fold(1) { acc, student -> acc * student.type.value }
+    return student.grades.asSequence().filter { grade -> grade.type != GradeType.F }
+        .fold(1) { acc, student -> acc * student.type.value }
 }
 
 // region BONUS
