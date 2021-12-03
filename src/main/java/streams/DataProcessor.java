@@ -13,7 +13,7 @@ public class DataProcessor {
 
 
     public static List<Integer> getStudentAges(List<Student> students) {
-        return students.stream().map(student -> student.getAge()).toList();
+        return students.stream().map(Student::getAge).toList();
     }
 
     public static List<Student> getStudentsWithMinimumAge(List<Student> students, int minAge) {
